@@ -7,23 +7,33 @@
 
   <style>
     :root {
-      --bg-color: #f5f7fa;
+      --bg-color: #f4f6fb;
       --container-bg: #ffffff;
-      --text-color: #333;
-      --border-color: #eee;
-      --link-color: #0066cc;
-      --button-bg: #ddd;
-      --button-text: #000;
+      --text-color: #1f2933;
+      --muted-text: #6b7280;
+      --border-color: #e5e7eb;
+      --link-color: #2563eb;
+      --accent-color: #2563eb;
+      --button-bg: #e5e7eb;
+      --button-text: #111827;
+      --card-bg: #ffffff;
     }
 
     body.dark {
-      --bg-color: #121212;
-      --container-bg: #1e1e1e;
-      --text-color: #eaeaea;
-      --border-color: #333;
-      --link-color: #4da3ff;
-      --button-bg: #333;
-      --button-text: #fff;
+      --bg-color: #0f172a;
+      --container-bg: #020617;
+      --text-color: #e5e7eb;
+      --muted-text: #94a3b8;
+      --border-color: #1e293b;
+      --link-color: #60a5fa;
+      --accent-color: #60a5fa;
+      --button-bg: #1e293b;
+      --button-text: #e5e7eb;
+      --card-bg: #020617;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -31,7 +41,7 @@
       background: var(--bg-color);
       color: var(--text-color);
       margin: 0;
-      padding: 0;
+      padding: 40px 20px;
       transition: background 0.3s, color 0.3s;
     }
 
@@ -39,64 +49,124 @@
       max-width: 900px;
       margin: auto;
       background: var(--container-bg);
-      padding: 40px;
+      padding: 48px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       transition: background 0.3s;
     }
 
-    h1 {
-      margin-bottom: 5px;
-    }
-
-    h2 {
-      margin-top: 40px;
-      border-bottom: 2px solid var(--border-color);
-      padding-bottom: 5px;
-    }
-
-    h3 {
-      margin-bottom: 5px;
-    }
-
-    p {
-      line-height: 1.6;
-    }
+    /* HEADER */
 
     .header {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin: 0;
+    }
+
+    .header strong {
+      font-size: 1.1rem;
+      color: var(--accent-color);
+    }
+
+    .contact {
+      font-size: 0.95rem;
+      color: var(--muted-text);
     }
 
     .contact a {
       color: var(--link-color);
       text-decoration: none;
-      margin-right: 10px;
+      font-weight: 500;
+      margin-left: 6px;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    #theme-toggle {
+      align-self: flex-start;
+      margin-top: 10px;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      background: var(--button-bg);
+      color: var(--button-text);
+      font-size: 0.85rem;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    #theme-toggle:hover {
+      transform: translateY(-1px);
+      opacity: 0.9;
+    }
+
+    /* SECTIONS */
+
+    section {
+      margin-bottom: 36px;
+      padding: 24px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 1.3rem;
+      border-left: 4px solid var(--accent-color);
+      padding-left: 12px;
+    }
+
+    p {
+      line-height: 1.7;
+      margin: 0 0 12px;
+      color: var(--text-color);
     }
 
     ul {
-      padding-left: 20px;
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    li a {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    li a:hover {
+      text-decoration: underline;
     }
 
     footer {
       text-align: center;
       margin-top: 40px;
-      color: #777;
-      font-size: 0.9em;
-    }
-
-    #theme-toggle {
-      align-self: flex-start;
-      padding: 6px 12px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      background: var(--button-bg);
-      color: var(--button-text);
+      font-size: 0.85rem;
+      color: var(--muted-text);
     }
 
     @media (max-width: 600px) {
+      body {
+        padding: 20px 12px;
+      }
+
       .container {
-        padding: 20px;
+        padding: 28px;
       }
     }
   </style>
@@ -114,7 +184,7 @@
       <div class="contact">
         📍 Tarragona ·
         📧 daro047@vidalibarraquer.net ·
-        <a href="https://linkedin.com/in/david-romero-san-millan" target="_blank">LinkedIn</a>
+        <a href="https://linkedin.com/in/david-romero-san-millan" target="_blank">LinkedIn</a> ·
         <a href="https://github.com/davidromerosanmillan" target="_blank">GitHub</a>
       </div>
     </header>
@@ -181,7 +251,6 @@
     const toggle = document.getElementById("theme-toggle");
     const body = document.body;
 
-    // Detectar modo del sistema si no hay preferencia guardada
     if (
       !localStorage.getItem("theme") &&
       window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -190,7 +259,6 @@
       toggle.textContent = "☀️ Modo claro";
     }
 
-    // Cargar preferencia guardada
     if (localStorage.getItem("theme") === "dark") {
       body.classList.add("dark");
       toggle.textContent = "☀️ Modo claro";
