@@ -169,6 +169,35 @@
         padding: 28px;
       }
     }
+    .skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.project {
+  margin-bottom: 14px;
+}
+
+.project a {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.project p {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: var(--muted-text);
+}
+
   </style>
 </head>
 
@@ -199,24 +228,39 @@
       </p>
     </section>
 
-    <section>
-      <h2>Habilitats</h2>
-      <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>React</li>
-        <li>Node.js</li>
-        <li>Java</li>
-        <li>Git y GitHub</li>
-      </ul>
-    </section>
+<section>
+  <h2>Habilitats</h2>
+  <div class="skills">
+    <span class="skill">HTML</span>
+    <span class="skill">CSS</span>
+    <span class="skill">JavaScript</span>
+    <span class="skill">React</span>
+    <span class="skill">Node.js</span>
+    <span class="skill">Java</span>
+    <span class="skill">Git</span>
+    <span class="skill">GitHub</span>
+  </div>
+</section>
 
-    <section>
-      <h2>Projectes</h2>
-      <ul>
-        <li><a href="https://github.com/yaniaici/HACKATHON_TECHTALENT">Hackathon TechTalent: Marketplace Tarragona</a></li>
-        <li><a href="https://github.com/DavidRomeroSanMillan/komuni">Projecte Komuni TechTalent 2025</a></li>
-      </ul>
-    </section>
+
+<section>
+  <h2>Projectes</h2>
+
+  <div class="project">
+    <a href="https://github.com/yaniaici/HACKATHON_TECHTALENT">
+      Hackathon TechTalent – Marketplace Tarragona
+    </a>
+    <p>Aplicació web col·laborativa orientada a comerç local.</p>
+  </div>
+
+  <div class="project">
+    <a href="https://github.com/DavidRomeroSanMillan/komuni">
+      Projecte Komuni – TechTalent 2025
+    </a>
+    <p>Plataforma web desenvolupada amb stack fullstack.</p>
+  </div>
+</section>
+
 
     <section>
       <h2>Formació</h2>
