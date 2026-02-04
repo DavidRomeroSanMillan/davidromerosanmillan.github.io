@@ -6,19 +6,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
+    :root {
+      --bg-color: #f5f7fa;
+      --container-bg: #ffffff;
+      --text-color: #333;
+      --border-color: #eee;
+      --link-color: #0066cc;
+      --button-bg: #ddd;
+      --button-text: #000;
+    }
+
+    body.dark {
+      --bg-color: #121212;
+      --container-bg: #1e1e1e;
+      --text-color: #eaeaea;
+      --border-color: #333;
+      --link-color: #4da3ff;
+      --button-bg: #333;
+      --button-text: #fff;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #f5f7fa;
-      color: #333;
+      background: var(--bg-color);
+      color: var(--text-color);
       margin: 0;
       padding: 0;
+      transition: background 0.3s, color 0.3s;
     }
 
     .container {
       max-width: 900px;
       margin: auto;
-      background: #fff;
+      background: var(--container-bg);
       padding: 40px;
+      transition: background 0.3s;
     }
 
     h1 {
@@ -27,7 +49,7 @@
 
     h2 {
       margin-top: 40px;
-      border-bottom: 2px solid #eee;
+      border-bottom: 2px solid var(--border-color);
       padding-bottom: 5px;
     }
 
@@ -46,17 +68,13 @@
     }
 
     .contact a {
-      color: #0066cc;
+      color: var(--link-color);
       text-decoration: none;
       margin-right: 10px;
     }
 
     ul {
       padding-left: 20px;
-    }
-
-    .job {
-      margin-bottom: 20px;
     }
 
     footer {
@@ -66,6 +84,16 @@
       font-size: 0.9em;
     }
 
+    #theme-toggle {
+      align-self: flex-start;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: var(--button-bg);
+      color: var(--button-text);
+    }
+
     @media (max-width: 600px) {
       .container {
         padding: 20px;
@@ -73,12 +101,16 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
     <header class="header">
       <h1>David Romero San Millán</h1>
       <strong>Desarrollador Fullstack</strong>
+
+      <button id="theme-toggle">🌙 Modo oscuro</button>
+
       <div class="contact">
         📍 Tarragona ·
         📧 emailfictici@gmail.com ·
@@ -88,10 +120,10 @@
     </header>
 
     <section>
-      <h2>Sobre mi</h2>
+      <h2>Sobre mí</h2>
       <p>
         Desenvolupador web amb experiència en creació d'aplicacions modernes,
-        enfocat en escriure codi net, mantenible i centrar en l'usuari.
+        enfocat en escriure codi net, mantenible i centrat en l'usuari.
       </p>
     </section>
 
@@ -108,11 +140,11 @@
 
     <section>
       <h2>Projectes</h2>
-        <ul>
-      <li>Hackathon TechTalent: Marketplace Tarragona</li>
-          
-        </ul>
-      
+      <ul>
+        <li>Hackathon TechTalent: Marketplace Tarragona</li>
+        <li><a href="#">Portfolio personal</a></li>
+        <li><a href="#">App de tareas (React + Firebase)</a></li>
+      </ul>
     </section>
 
     <section>
@@ -124,20 +156,12 @@
     </section>
 
     <section>
-      <h2>Projectes</h2>
-      <ul>
-        <li><a href="#">Portfolio personal</a></li>
-        <li><a href="#">App de tareas (React + Firebase)</a></li>
-      </ul>
-    </section>
-
-    <section>
       <h2>Idiomes</h2>
       <ul>
-        <li>Español – Nadiu</li>
-        <li>Català - Nadiu</li>
+        <li>Español – Nativo</li>
+        <li>Català – Nativo</li>
         <li>Anglès – C2</li>
-        <li>Japonès - B1</li>
+        <li>Japonès – B1</li>
       </ul>
     </section>
 
@@ -145,6 +169,38 @@
       © 2026 David Romero San Millán
     </footer>
   </div>
+
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    // Detectar modo del sistema si no hay preferencia guardada
+    if (
+      !localStorage.getItem("theme") &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      body.classList.add("dark");
+      toggle.textContent = "☀️ Modo claro";
+    }
+
+    // Cargar preferencia guardada
+    if (localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark");
+      toggle.textContent = "☀️ Modo claro";
+    }
+
+    toggle.addEventListener("click", () => {
+      body.classList.toggle("dark");
+
+      if (body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        toggle.textContent = "☀️ Modo claro";
+      } else {
+        localStorage.setItem("theme", "light");
+        toggle.textContent = "🌙 Modo oscuro";
+      }
+    });
+  </script>
 
 </body>
 </html>
